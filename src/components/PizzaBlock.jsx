@@ -1,7 +1,8 @@
 import React from "react";
 
 
-function PizzaBlock({image, title, price}) {
+
+function PizzaBlock({image, title, price, size}) {
 
   const [pizzaCount, setPizzaCount] =React.useState(0);
   const onClickAdd=()=>{
@@ -23,9 +24,7 @@ function PizzaBlock({image, title, price}) {
         <li>традиционное</li>
       </ul>
       <ul>
-        <li className="active">26 см.</li>
-        <li>30 см.</li>
-        <li>40 см.</li>
+       { size.map((size) =>(<li>{size}см</li>))}
       </ul>
     </div>
     <div className="pizza-block__bottom">
