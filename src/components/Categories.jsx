@@ -15,7 +15,7 @@ const categories=['Все','Мясные-Халал',  ' Гриль', 'Остр�
   <div className="categories">
   <ul> { 
   categories.map((Menu, i)=>(
-  <li onClick={()=>onClickCategories(i)} className={activeIndex===i ? 'active' : ''}>{Menu}</li>))
+  <li  key={i} onClick={()=>onClickCategories(i)} className={activeIndex===i ? 'active' : ''}>{Menu}</li>))
     
    }
    

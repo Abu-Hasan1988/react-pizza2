@@ -24,10 +24,12 @@ function App() {
       {
         pizzas.map((obj)=>(
         <PizzaBlock 
+        key={obj.imageUrl}
         title={obj.title}
         price={obj.price} 
         image={obj.imageUrl} 
         size={obj.sizes}
+        xxx={obj.types}
         />
         ))
       };
