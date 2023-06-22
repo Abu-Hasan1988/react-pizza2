@@ -13,7 +13,8 @@ function PizzaBlock({image, title, price, size, xxx}) {
   
 
   return(
-    <div className="pizza-block">
+    <div className="pizza-block-wrapper">
+      <div className="pizza-block">
     <img
       className="pizza-block__image"
       src={image}
@@ -49,6 +50,7 @@ function PizzaBlock({image, title, price, size, xxx}) {
       </div>
     </div>
     </div> 
+    </div>
   )
 };
 

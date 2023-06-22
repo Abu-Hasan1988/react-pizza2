@@ -3,11 +3,21 @@
 .header {
   border-bottom: 1px solid $gray-line;
   padding: 40px 0;
+ 
 
   .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+    @media (max-width:610px) {
+      flex-direction: column;
+
+      .header_cart {
+        margin-top: 20px;
+      }
+    }
   }
 
   &__logo {
