@@ -7,25 +7,28 @@ import Cart from './pages/Cart';
 import {Routes, Route } from 'react-router-dom';
 
 
+export const SearchContext = React.createContext();
 
 
 function App() {
   
   const [searchValue, setSearchValue] = React.useState('');
-console.log(searchValue, 'input');
+
 
   return (
     <div className="wrapper">
-    <Header searchValue={searchValue} setSearchValue={setSearchValue} />
+   <SearchContext.Provider value={{searchValue, setSearchValue}}>
+   <Header  />
    
-    <div className="content">
-      
-    <Routes>
-    <Route path="/" element={<Home searchValue={searchValue}/>}/>
-    <Route path="/cart" element={<Cart/>}/>
-    <Route path="*" element={<NotFound/>}/>
-    </Routes>
-        </div>
+   <div className="content">
+     
+   <Routes>
+   <Route path="/" element={<Home />}/>
+   <Route path="/cart" element={<Cart/>}/>
+   <Route path="*" element={<NotFound/>}/>
+   </Routes>
+       </div>
+   </SearchContext.Provider>
       </div>
   
     
