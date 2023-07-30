@@ -13,21 +13,18 @@ import Pagination from '../components/Pagination';
 const Home=()=> {
     const categoryId = useSelector((state) => state.filter.categoryId);
     const dispatch = useDispatch();
-   
+    const sortType = useSelector((state)=>state.filter.sort.sortProperty);
 
   const {searchValue} = React.useContext(SearchContext);
 
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  // const  [categoryId, setCategoryId]=React.useState(0);
+  
   const  [currentPage, setCurrentPage]=React.useState(1);
-  const  [sortType, setSortType]=React.useState({
-    name:'популярности',
-    sortProperty:'rating',
-  });
+  
 
   const onChangeCategory = (id) => {
-      console.log(id);
+     
       dispatch(setCategoryId(id));
   }
  
@@ -37,8 +34,8 @@ const Home=()=> {
   React.useEffect(()=>{
     setIsLoading(true);
 
-    const sortBy=sortType.sortProperty.replace('-', '');
-    const order=sortType.sortProperty.includes('-') ? 'asc' : 'desc';
+    const sortBy=sortType.replace('-', '');
+    const order=sortType.includes('-') ? 'asc' : 'desc';
     const category=categoryId > 0 ? `category=${categoryId}`: ''
     const search = searchValue ? `&search=${searchValue}` : '';
 
@@ -67,7 +64,7 @@ const pizzas = items.map((obj)=>(
    <div className="container">
     <div className="content__top">
    <Categories value={categoryId}  onChangeCategory={onChangeCategory}/>
-   <Sort  value2={sortType}  onChangeSort={(i)=>setSortType(i) } />
+   <Sort/>
    </div>
 
    <h2 className="content__title">Все пиццы</h2>
