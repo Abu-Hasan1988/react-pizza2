@@ -2,6 +2,7 @@ import React from 'react';
 import { SearchContext } from '../App';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCategoryId } from '../redux/slices/filterSlice';
+import axios from 'axios';
 
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
@@ -14,6 +15,8 @@ const Home=()=> {
     const categoryId = useSelector((state) => state.filter.categoryId);
     const dispatch = useDispatch();
     const sortType = useSelector((state)=>state.filter.sort.sortProperty);
+
+    console.log('sportType', sortType);
 
   const {searchValue} = React.useContext(SearchContext);
 
@@ -39,11 +42,17 @@ const Home=()=> {
     const category=categoryId > 0 ? `category=${categoryId}`: ''
     const search = searchValue ? `&search=${searchValue}` : '';
 
-   fetch  (`https://645e5a5412e0a87ac0ee299a.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`,)
-   .then(response=>response.json())
-   .then(json=>{setItems(json);
-     setIsLoading(false);
- });
+    axios
+    .get(
+      `https://645e5a5412e0a87ac0ee299a.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`,
+    )
+    .then((hasan)=>
+      {
+      setItems(hasan.data);
+      setIsLoading(false);
+      
+    });
+  
  window.scrollTo(0,0);
 }, [categoryId, sortType, searchValue, currentPage]);
 
