@@ -17,8 +17,8 @@ const [open, setOpen]=React.useState(false);
     {name: 'алфавиту (ASC)', sortProperty:'-title'}
   ];
 
-  const onClickList = (obj)=> {
-   dispatch(setSort(obj));
+  const onClickList = (name)=> {
+   dispatch(setSort(name));
     setOpen(false);
   };
   return(<div className="sort">
